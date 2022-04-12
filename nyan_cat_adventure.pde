@@ -12,7 +12,7 @@ void draw(){
   tranX+=3;
   tranY-=6;
   for(int i=0;i<19;i++){
-    for(int j=-10;j<900;j++){
+    for(int j=-10;j<300;j++){
       if((i+j)%2==0){
         fill(#1e9600);
       }else{
