@@ -41,6 +41,24 @@ void draw(){
       playerY-=6;
       image(player,playerX,playerY);
       break;
+    case PLAYER_DOWN:
+      movingTimer+=1;
+      playerX-=3;
+      playerY+=6;
+      image(player,playerX,playerY);
+      break;
+    case PLAYER_LEFT:
+      movingTimer+=1;
+      playerX-=8;
+      playerY-=2;
+      image(player,playerX,playerY);
+      break;
+    case PLAYER_RIGHT:
+      movingTimer+=1;
+      playerX+=8;
+      playerY+=2;
+      image(player,playerX,playerY);
+      break;
   }
   
   if(movingTimer==10){
