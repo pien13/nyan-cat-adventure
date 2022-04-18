@@ -12,15 +12,24 @@ int movingTimer=0;
 void grass(int j){
   for(int i=0;i<19;i++){
     if((i+j)%2==0){
-        fill(#1e9600);
-      }else{
-        fill(#0ed145);
-      }
-      landX=i*80+j*(-30);
-      landY=i*20+j*60;
-      quad(landX,landY,landX+80,landY+20,landX+50,landY+80,landX-30,landY+60);
+      fill(#1e9600);
+    }else{
+      fill(#0ed145);
     }
+    landX=i*80+j*(-30);
+    landY=i*20+j*60;
+    quad(landX,landY,landX+80,landY+20,landX+50,landY+80,landX-30,landY+60);
+  }
     
+}
+
+void road(int j){
+  for(int i=0;i<19;i++){
+    fill(#404040);
+    landX=i*80+j*(-30);
+    landY=i*20+j*60;
+    quad(landX,landY,landX+80,landY+20,landX+50,landY+80,landX-30,landY+60);
+  }
 }
 void setup(){
   size(1280,720,P2D);
@@ -38,7 +47,11 @@ void draw(){
   //draw map
   
   for(int j=20-offsetY;j>-20-offsetY;j--){
+    if(j%2==0){
       grass(j);
+    }else{
+      road(j);
+    }
   }
   
   //drawPlayer
