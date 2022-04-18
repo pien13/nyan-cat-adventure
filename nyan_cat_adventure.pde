@@ -2,6 +2,7 @@ PImage player;
 int landX,landY;
 float tranX=0,tranY=0;
 int playerX=560,playerY=590;
+int offsetX=0,offsetY=0;
 int playerState;
 final int PLAYER_IDLE=0,PLAYER_UP=1,PLAYER_DOWN=2,PLAYER_RIGHT=3,PLAYER_LEFT=4;
   int movingTimer=0;
@@ -17,8 +18,10 @@ void draw(){
   translate(tranX,tranY);
   tranX-=0.125;
   tranY+=0.25;
+  
+  //draw map
   for(int i=0;i<19;i++){
-    for(int j=10;j>-300;j--){
+    for(int j=20-offsetY;j>-20-offsetY;j--){
       if((i+j)%2==0){
         fill(#1e9600);
       }else{
@@ -85,24 +88,28 @@ void keyPressed(){
               if(playerState==PLAYER_IDLE){
                 playerState=PLAYER_UP;
                 movingTimer=0;
+                offsetY++;
               }
               break;
             case RIGHT:
-              if(playerState==PLAYER_IDLE){
+              if(playerState==PLAYER_IDLE&&offsetX<4){
                 playerState=PLAYER_RIGHT;
                 movingTimer=0;
+                offsetX++;
               }
               break;
             case LEFT:
-              if(playerState==PLAYER_IDLE){
+              if(playerState==PLAYER_IDLE&&offsetX>-4){
                 playerState=PLAYER_LEFT;
                 movingTimer=0;
+                offsetX--;
               }
               break;
             case DOWN:
               if(playerState==PLAYER_IDLE){
                 playerState=PLAYER_DOWN;
                 movingTimer=0;
+                offsetY--;
               }
               break;
           }
