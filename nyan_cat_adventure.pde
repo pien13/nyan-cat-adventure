@@ -15,8 +15,8 @@ void setup(){
 void draw(){
   pushMatrix();
   translate(tranX,tranY);
-  tranX-=0.5;
-  tranY+=1;
+  tranX-=0.125;
+  tranY+=0.25;
   for(int i=0;i<19;i++){
     for(int j=10;j>-300;j--){
       if((i+j)%2==0){
@@ -39,25 +39,25 @@ void draw(){
       movingTimer+=1;
       playerX+=3;
       playerY-=6;
-      image(player,playerX,playerY);
+      image(player,playerX,playerY-10);
       break;
     case PLAYER_DOWN:
       movingTimer+=1;
       playerX-=3;
       playerY+=6;
-      image(player,playerX,playerY);
+      image(player,playerX,playerY-10);
       break;
     case PLAYER_LEFT:
       movingTimer+=1;
       playerX-=8;
       playerY-=2;
-      image(player,playerX,playerY);
+      image(player,playerX,playerY-10);
       break;
     case PLAYER_RIGHT:
       movingTimer+=1;
       playerX+=8;
       playerY+=2;
-      image(player,playerX,playerY);
+      image(player,playerX,playerY-10);
       break;
   }
   
@@ -65,7 +65,14 @@ void draw(){
     playerState=PLAYER_IDLE;
     movingTimer=0;
   }
-      
+  
+  //Adjust Rolling Speed
+  for(int i=550;i>=0;i=i-25){
+    if(tranY+playerY<=i){
+      tranX-=0.125;
+      tranY+=0.25;
+    }
+  }
   
   popMatrix();
 }
