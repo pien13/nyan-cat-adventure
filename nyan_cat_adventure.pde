@@ -5,7 +5,23 @@ int playerX=560,playerY=590;
 int offsetX=0,offsetY=0;
 int playerState;
 final int PLAYER_IDLE=0,PLAYER_UP=1,PLAYER_DOWN=2,PLAYER_RIGHT=3,PLAYER_LEFT=4;
-  int movingTimer=0;
+int movingTimer=0;
+  
+//map drawing functions
+//grass
+void grass(int j){
+  for(int i=0;i<19;i++){
+    if((i+j)%2==0){
+        fill(#1e9600);
+      }else{
+        fill(#0ed145);
+      }
+      landX=i*80+j*(-30);
+      landY=i*20+j*60;
+      quad(landX,landY,landX+80,landY+20,landX+50,landY+80,landX-30,landY+60);
+    }
+    
+}
 void setup(){
   size(1280,720,P2D);
   noStroke();
@@ -20,17 +36,9 @@ void draw(){
   tranY+=0.25;
   
   //draw map
-  for(int i=0;i<19;i++){
-    for(int j=20-offsetY;j>-20-offsetY;j--){
-      if((i+j)%2==0){
-        fill(#1e9600);
-      }else{
-        fill(#0ed145);
-      }
-      landX=i*80+j*(-30);
-      landY=i*20+j*60;
-      quad(landX,landY,landX+80,landY+20,landX+50,landY+80,landX-30,landY+60);
-    }
+  
+  for(int j=20-offsetY;j>-20-offsetY;j--){
+      grass(j);
   }
   
   //drawPlayer
