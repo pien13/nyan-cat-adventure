@@ -36,6 +36,12 @@ void road(int j){
     landX=i*80+j*(-30);
     landY=i*20+j*60;
     quad(landX,landY,landX+80,landY+20,landX+50,landY+80,landX-30,landY+60);
+    
+    fill(100);
+    //draw line
+    if(i%2==0){
+      quad(landX-14,landY+28,landX+66,landY+48,landX+64,landY+52,landX-14,landY+32);
+    }
   }
 }
 void setup(){
