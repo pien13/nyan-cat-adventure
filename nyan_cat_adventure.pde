@@ -11,14 +11,21 @@ int movingTimer=0;
 //grass
 void grass(int j){
   for(int i=0;i<19;i++){
-    if((i+j)%2==0){
-      fill(#1e9600);
+    if(i<6 || i>14){
+      fill(#0cb43c);
     }else{
       fill(#0ed145);
     }
     landX=i*80+j*(-30);
     landY=i*20+j*60;
-    quad(landX,landY,landX+80,landY+20,landX+50,landY+80,landX-30,landY+60);
+    quad(landX,landY-5,landX+80,landY+20-5,landX+50,landY+80-5,landX-30,landY+60-5);
+    
+    if(i<6 || i>14){
+      fill(#0a9030);
+    }else{
+      fill(#0cb43c);
+    }
+    quad(landX+50,landY+80-5,landX-30,landY+60-5,landX-30,landY+60,landX+50,landY+80);
   }
     
 }
