@@ -15,8 +15,8 @@ void setup(){
 void draw(){
   pushMatrix();
   translate(tranX,tranY);
-  //tranX-=0.5;
-  //tranY+=1;
+  tranX-=0.5;
+  tranY+=1;
   for(int i=0;i<19;i++){
     for(int j=10;j>-300;j--){
       if((i+j)%2==0){
