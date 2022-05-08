@@ -1,4 +1,4 @@
-PImage player;
+PImage player,tree;
 int landX, landY;
 float tranX=0, tranY=0;
 int playerX=560, playerY=590;
@@ -49,6 +49,7 @@ void setup() {
   size(1280, 720, P2D);
   noStroke();
   player = loadImage("img/player.png");
+  tree = loadImage("img/tree1_l-01.png");
   for (int i=0; i<maps.length; i++) {
     if (i<16) {
       maps[i]=new Grass(20-i);
@@ -80,6 +81,7 @@ void draw() {
 
   for (int j=39; j>=0; j--) {
     maps[j].display();
+    image(tree,200, 200);
   }
 
   //drawPlayer
