@@ -9,7 +9,7 @@ class Road extends Map {
       fill(#404040);
       landX=i*80+y*(-30);
       landY=i*20+y*60;
-      quad(landX, landY, landX+80, landY+20, landX+50, landY+80, landX-30, landY+60);
+      quad(landX, landY, landX+80, landY+20, landX+110, landY-40, landX+30, landY-60);
 
       fill(100);
       //draw line

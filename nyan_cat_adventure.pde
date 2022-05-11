@@ -9,43 +9,7 @@ int movingTimer=0;
 Map[] maps=new Map[40];
 final int ROAD=1, GRASS=0;
 
-//map drawing functions
-//grass
-/*void grass(int j){
- for(int i=0;i<19;i++){
- if(i<6 || i>14){
- fill(#0cb43c);
- }else{
- fill(#0ed145);
- }
- landX=i*80+j*(-30);
- landY=i*20+j*60;
- quad(landX,landY-5,landX+80,landY+20-5,landX+50,landY+80-5,landX-30,landY+60-5);
- 
- if(i<6 || i>14){
- fill(#0a9030);
- }else{
- fill(#0cb43c);
- }
- quad(landX+50,landY+80-5,landX-30,landY+60-5,landX-30,landY+60,landX+50,landY+80);
- }
- 
- }
- 
- void road(int j){
- for(int i=0;i<19;i++){
- fill(#404040);
- landX=i*80+j*(-30);
- landY=i*20+j*60;
- quad(landX,landY,landX+80,landY+20,landX+50,landY+80,landX-30,landY+60);
- 
- fill(100);
- //draw line
- if(i%2==0){
- quad(landX-14,landY+28,landX+66,landY+48,landX+64,landY+52,landX-14,landY+32);
- }
- }
- }*/
+
 void setup() {
   size(1280, 720, P2D);
   noStroke();
