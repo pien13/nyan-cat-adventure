@@ -5,4 +5,9 @@ class Tree{
     this.x=x;
     this.y=y;
   }
+  /*
+  void display(){
+    drawImage(
+  }
+  */
 }
