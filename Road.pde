@@ -11,7 +11,11 @@ class Road extends Map {
       landY=i*20+y*60;
       quad(landX, landY, landX+80, landY+20, landX+110, landY-40, landX+30, landY-60);
 
-      fill(100);
+      if (debugMode) {
+        fill(255);
+        textSize(30);
+        text(y, landX, landY);
+      }
       //draw line
       //if (i%2==0) {
       //  quad(landX-14, landY+28, landX+66, landY+48, landX+64, landY+52, landX-14, landY+32);

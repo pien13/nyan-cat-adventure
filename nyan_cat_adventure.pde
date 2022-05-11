@@ -2,10 +2,11 @@ PImage player;
 int landX, landY;
 float tranX=0, tranY=0;
 int playerX=560, playerY=680;
-int offsetX=0, offsetY=0;
+int offsetX=0, offsetY=8;
 int playerState;
 final int PLAYER_IDLE=0, PLAYER_UP=1, PLAYER_DOWN=2, PLAYER_RIGHT=3, PLAYER_LEFT=4;
 int movingTimer=0;
+boolean debugMode=false;
 Map[] maps=new Map[40];
 final int ROAD=1, GRASS=0;
 
@@ -100,14 +101,15 @@ void keyPressed() {
       if (playerState==PLAYER_IDLE) {
         playerState=PLAYER_UP;
         movingTimer=0;
-        offsetY++;
+        offsetY--;
         //offset map forward and create new map
         for (int i=0; i<39; i++) {
           maps[i]=maps[i+1];
         }
-        switch(floor(random(2))){
-          case 0:maps[39]=new Grass(20-offsetY-39);break;
-          case 1:maps[39]=new Road(20-offsetY-39);break;
+        switch(floor(random(3))){
+          case 0:maps[39]=new Grass(offsetY-27);break;
+          case 1:maps[39]=new Road(offsetY-27);break;
+          case 2:maps[39]=new Road(offsetY-27);break;
         }
         
       }
@@ -130,7 +132,7 @@ void keyPressed() {
       if (playerState==PLAYER_IDLE) {
         playerState=PLAYER_DOWN;
         movingTimer=0;
-        offsetY--;
+        offsetY++;
         
         //offset map backward and create new map
         for (int i=39; i>0; i--) {
@@ -138,6 +140,11 @@ void keyPressed() {
         }
       }
       break;
+    }
+  }else{
+    if(key=='b'){
+      // Press B to toggle demo mode
+      debugMode = !debugMode;
     }
   }
 }
