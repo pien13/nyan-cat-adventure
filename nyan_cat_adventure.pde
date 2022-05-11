@@ -1,7 +1,7 @@
 PImage player;
 int landX, landY;
 float tranX=0, tranY=0;
-int playerX=560, playerY=590;
+int playerX=560, playerY=680;
 int offsetX=0, offsetY=0;
 int playerState;
 final int PLAYER_IDLE=0, PLAYER_UP=1, PLAYER_DOWN=2, PLAYER_RIGHT=3, PLAYER_LEFT=4;
@@ -54,31 +54,31 @@ void draw() {
   //drawPlayer
   switch(playerState) {
   case PLAYER_IDLE:
-    image(player, playerX, playerY);
+    drawImage(player, playerX, playerY);
     break;
   case PLAYER_UP:
     movingTimer+=1;
     playerX+=3;
     playerY-=6;
-    image(player, playerX, playerY-5);
+    drawImage(player, playerX, playerY-5);
     break;
   case PLAYER_DOWN:
     movingTimer+=1;
     playerX-=3;
     playerY+=6;
-    image(player, playerX, playerY-5);
+    drawImage(player, playerX, playerY-5);
     break;
   case PLAYER_LEFT:
     movingTimer+=1;
     playerX-=8;
     playerY-=2;
-    image(player, playerX, playerY-5);
+    drawImage(player, playerX, playerY-5);
     break;
   case PLAYER_RIGHT:
     movingTimer+=1;
     playerX+=8;
     playerY+=2;
-    image(player, playerX, playerY-5);
+    drawImage(player, playerX, playerY-5);
     break;
   }
 

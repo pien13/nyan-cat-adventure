@@ -1,3 +1,4 @@
+//code for draw road marking line
 void roadMarkingLine(int y) {
   if (maps[y].type==ROAD && maps[y-1].type==ROAD) {
     for (int i=0; i<19; i++) {
@@ -10,5 +11,13 @@ void roadMarkingLine(int y) {
         quad(landX+1, landY-2, landX+81, landY+18, landX+79, landY+22, landX-1, landY+2);
       }
     }
+  }
+}
+
+//code for draw image form the position point
+void drawImage(PImage image,float x,float y){
+  if(image.width%110==0){
+    int n=int(image.width/110);
+    image(image,x,y-(image.height-20*n));
   }
 }
