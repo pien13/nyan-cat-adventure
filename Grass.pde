@@ -2,7 +2,7 @@ class Grass extends Map {
   Tree[] trees;
   Grass(int y) {
     super(y);
-    
+    type=GRASS;
   }
   void display() {
     for (int i=0; i<19; i++) {

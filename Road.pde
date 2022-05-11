@@ -2,6 +2,7 @@ class Road extends Map {
 
   Road(int y) {
     super(y);
+    type=ROAD;
   }
   void display() {
     for (int i=0; i<19; i++) {
@@ -12,9 +13,9 @@ class Road extends Map {
 
       fill(100);
       //draw line
-      if (i%2==0) {
-        quad(landX-14, landY+28, landX+66, landY+48, landX+64, landY+52, landX-14, landY+32);
-      }
+      //if (i%2==0) {
+      //  quad(landX-14, landY+28, landX+66, landY+48, landX+64, landY+52, landX-14, landY+32);
+      //}
     }
   }
 }

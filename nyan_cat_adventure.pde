@@ -1,4 +1,4 @@
-PImage player,tree;
+PImage player;
 int landX, landY;
 float tranX=0, tranY=0;
 int playerX=560, playerY=590;
@@ -7,6 +7,7 @@ int playerState;
 final int PLAYER_IDLE=0, PLAYER_UP=1, PLAYER_DOWN=2, PLAYER_RIGHT=3, PLAYER_LEFT=4;
 int movingTimer=0;
 Map[] maps=new Map[40];
+final int ROAD=1, GRASS=0;
 
 //map drawing functions
 //grass
@@ -49,7 +50,7 @@ void setup() {
   size(1280, 720, P2D);
   noStroke();
   player = loadImage("img/player.png");
-  tree = loadImage("img/tree1_l-01.png");
+  
   for (int i=0; i<maps.length; i++) {
     if (i<16) {
       maps[i]=new Grass(20-i);
@@ -81,7 +82,9 @@ void draw() {
 
   for (int j=39; j>=0; j--) {
     maps[j].display();
-    image(tree,200, 200);
+  }
+  for (int j=39; j>0; j--) {
+    roadMarkingLine(j);
   }
 
   //drawPlayer
