@@ -1,4 +1,5 @@
 PImage playerImg;
+PImage[] tree=new PImage[4];
 int landX, landY;
 float tranX=0, tranY=0;
 Player player;
@@ -14,6 +15,10 @@ void setup() {
   size(1280, 720, P2D);
   noStroke();
   playerImg = loadImage("img/player.png");
+  //loading Tree Image
+  for(int i=0;i<4;i++){
+    tree[i] = loadImage("img/tree" + i + ".png") ;
+  }
   
   for (int i=0; i<maps.length; i++) {
     if (i<16) {
@@ -57,7 +62,11 @@ void draw() {
 
   //drawPlayer
   player.update();
-
+  
+  //draw tree
+  for (int j=39; j>=0; j--) {
+    maps[j].displayObjects();
+  }
 
 
   popMatrix();
@@ -85,14 +94,14 @@ void keyPressed() {
       }
       break;
     case RIGHT:
-      if (playerState==PLAYER_IDLE&&player.offsetX<4) {
+      if (playerState==PLAYER_IDLE&&player.offsetX<8) {
         playerState=PLAYER_RIGHT;
         player.movingTimer=0;
         player.offsetX++;
       }
       break;
     case LEFT:
-      if (playerState==PLAYER_IDLE&&player.offsetX>-4) {
+      if (playerState==PLAYER_IDLE&&player.offsetX>0) {
         playerState=PLAYER_LEFT;
         player.movingTimer=0;
         player.offsetX--;

@@ -3,6 +3,23 @@ class Grass extends Map {
   Grass(int y) {
     super(y);
     type=GRASS;
+    //generate tree
+    trees=new Tree[floor(random(5))];
+    int newTreeX;
+    for (int i=0; i<trees.length; i++) {
+      if (floor(random(2))==0) {
+        newTreeX=floor(random(3));
+        while(checkTreeXreuse(newTreeX,i)){
+          newTreeX=6+floor(random(3));
+        }
+      } else {
+        newTreeX=6+floor(random(3));
+        while(checkTreeXreuse(newTreeX,i)){
+          newTreeX=floor(random(3));
+        }
+      }
+      trees[i]=new Tree(newTreeX,y);
+    }
   }
   void display() {
     for (int i=0; i<19; i++) {
@@ -27,5 +44,22 @@ class Grass extends Map {
         text(y, landX, landY);
       }
     }
+    
+    
+  }
+  
+  void displayObjects(){
+    for(int i=0; i<trees.length; i++) {
+      trees[i].display();
+    }
+  }
+
+  boolean checkTreeXreuse(int newTreeX, int n) {
+    for (int i=0; i<n; i++) {
+      if (trees[i].x==newTreeX) {
+        return true;
+      }
+    }
+    return false;
   }
 }

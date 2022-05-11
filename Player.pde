@@ -6,7 +6,7 @@ class Player {
   Player() {
     x=560;
     y=680;
-    offsetX=0;
+    offsetX=4;
     offsetY=8;
     movingTimer=0;
   }
