@@ -9,16 +9,16 @@ class Grass extends Map {
     for (int i=0; i<trees.length; i++) {
       if (floor(random(2))==0) {
         newTreeX=floor(random(3));
-        while(checkTreeXreuse(newTreeX,i)){
+        while (checkTreeXreuse(newTreeX, i)) {
           newTreeX=6+floor(random(3));
         }
       } else {
         newTreeX=6+floor(random(3));
-        while(checkTreeXreuse(newTreeX,i)){
+        while (checkTreeXreuse(newTreeX, i)) {
           newTreeX=floor(random(3));
         }
       }
-      trees[i]=new Tree(newTreeX,y);
+      trees[i]=new Tree(newTreeX, y);
     }
   }
   void display() {
@@ -44,14 +44,22 @@ class Grass extends Map {
         text(y, landX, landY);
       }
     }
-    
-    
   }
-  
-  void displayObjects(){
-    for(int i=0; i<trees.length; i++) {
+
+  void displayObjects() {
+    for (int i=0; i<trees.length; i++) {
       trees[i].display();
     }
+  }
+
+  int checkObjects(int x) {
+    //check tree
+    for (int i=0; i<trees.length; i++) {
+      if (trees[i].x==x) {
+        return TREE;
+      }
+    }
+    return -1;
   }
 
   boolean checkTreeXreuse(int newTreeX, int n) {

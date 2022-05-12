@@ -9,6 +9,7 @@ final int PLAYER_IDLE=0, PLAYER_UP=1, PLAYER_DOWN=2, PLAYER_RIGHT=3, PLAYER_LEFT
 boolean debugMode=false;
 Map[] maps=new Map[40];
 final int ROAD=1, GRASS=0;
+final int TREE=1;
 
 
 void setup() {
@@ -77,7 +78,7 @@ void keyPressed() {
   if (key ==CODED) {
     switch(keyCode) {
     case UP:
-      if (playerState==PLAYER_IDLE) {
+      if (playerState==PLAYER_IDLE && maps[13].checkObjects(player.offsetX)!=TREE) {
         playerState=PLAYER_UP;
         player.movingTimer=0;
         player.offsetY--;
@@ -94,21 +95,21 @@ void keyPressed() {
       }
       break;
     case RIGHT:
-      if (playerState==PLAYER_IDLE&&player.offsetX<8) {
+      if (playerState==PLAYER_IDLE && player.offsetX<8 && maps[12].checkObjects(player.offsetX+1)!=TREE) {
         playerState=PLAYER_RIGHT;
         player.movingTimer=0;
         player.offsetX++;
       }
       break;
     case LEFT:
-      if (playerState==PLAYER_IDLE&&player.offsetX>0) {
+      if (playerState==PLAYER_IDLE && player.offsetX>0 && maps[12].checkObjects(player.offsetX-1)!=TREE) {
         playerState=PLAYER_LEFT;
         player.movingTimer=0;
         player.offsetX--;
       }
       break;
     case DOWN:
-      if (playerState==PLAYER_IDLE) {
+      if (playerState==PLAYER_IDLE && maps[11].checkObjects(player.offsetX)!=TREE) {
         playerState=PLAYER_DOWN;
         player.movingTimer=0;
         player.offsetY++;
